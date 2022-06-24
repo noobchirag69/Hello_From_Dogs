@@ -3,16 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Dogs</title>
 </head>
 
 <body class="bg-danger">
-
-    <style>
-        .surprise {
-            display: none;
-        }
-    </style>
 
     <div class="d-flex justify-content-center">
         <div class="col-md-8 bg-light mx-4 my-5 py-4 px-4 rounded text-center">
@@ -29,26 +24,7 @@
         </div>
     </div>
 
-    <script>
-
-        let url = 'https://dog.ceo/api/breeds/image/random/50';
-
-        fetch(url)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                let Button = document.querySelector("button");
-                Button.addEventListener("click", () => {
-                    let RandomImage = Math.floor(Math.random() * data.message.length);
-                    let image = (data.message[RandomImage]);
-                    document.querySelector("img").src = image;
-                    document.querySelector('.surprise').style.display = 'block';
-                })
-            })
-            .catch(err => console.log(err));
-
-    </script>
+    <script src="app.js"></script>
 
 </body>
 
