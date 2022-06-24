@@ -3,24 +3,53 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Dogs</title>
 </head>
 
-<body>
-    <div class="d-flex justify-content-center align-items-center">
-        <div class="box col-md-4 bg-primary mx-4 my-5 py-5 rounded text-center text-white">
+<body class="bg-danger">
+
+    <style>
+        .surprise {
+            display: none;
+        }
+    </style>
+
+    <div class="d-flex justify-content-center">
+        <div class="col-md-8 bg-light mx-4 my-5 py-4 px-4 rounded text-center">
+            <p class="font-weight-bold mt-3">Made with &#10084;&#65039; by <a href="https://github.com/noobchirag69"
+                    target="_blank">Chirag Chakraborty</a></p>
             <h2>Tap the button for a cute surprise!</h2>
-            <button class="box btn btn-dark btn-lg mt-2">Surprise</button>
-            <div class="surprise mt-3">
-                <h4>Hello from Mr. Doggo!</h4>
+            <button class="btn btn-danger btn-lg mt-2">Surprise</button>
+            <div class="surprise mt-4">
+                <h4>Hello &#128075; from Mr. Doggo!</h4>
                 <div class="mt-3">
-                    <img class="box img-fluid rounded w-75">
+                    <img class="img-fluid rounded">
                 </div>
             </div>
         </div>
     </div>
-    <script src="app.js"></script>
+
+    <script>
+
+        let url = 'https://dog.ceo/api/breeds/image/random/50';
+
+        fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                let Button = document.querySelector("button");
+                Button.addEventListener("click", () => {
+                    let RandomImage = Math.floor(Math.random() * data.message.length);
+                    let image = (data.message[RandomImage]);
+                    document.querySelector("img").src = image;
+                    document.querySelector('.surprise').style.display = 'block';
+                })
+            })
+            .catch(err => console.log(err));
+
+    </script>
+
 </body>
 
 </html>
